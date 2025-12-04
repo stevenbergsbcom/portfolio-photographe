@@ -1,0 +1,24 @@
+--
+description: Règles HTML pour le portfolio
+globs: - "*.html"
+---
+# Structure obligatoire
+- DOCTYPE html + lang="fr"
+- Meta charset, viewport, description, keywords
+- Open Graph meta tags pour le partage social
+- Balises sémantiques : header, nav, main, section, article, footer
+# SEO
+- Un seul <h1> par page
+- Hiérarchie Hn respectée (h1 > h2 > h3)
+- Attribut alt sur TOUTES les images (descriptif, pas "image1")
+- Title unique et descriptif par page (50-60 caractères)
+- Meta description unique par page (150-160 caractères)
+# Accessibilité
+- Liens avec texte explicite (pas "cliquez ici")
+- aria-label sur les boutons icônes
+- Structure de navigation cohérente
+- Skip to content link
+# Performance
+- Lazy loading sur les images (loading="lazy")
+- Attributs width et height sur les images
+- Preload pour les ressources critiques

@@ -1,0 +1,26 @@
+--
+description: Règles JavaScript pour le portfolio
+globs: - "*.js"
+---
+# Syntaxe ES6+
+- const par défaut, let si mutation nécessaire
+- Fonctions fléchées
+- Template literals
+- Destructuring quand pertinent
+# DOM
+- querySelector / querySelectorAll uniquement
+- addEventListener (jamais onclick inline)
+- Délégation d'événements quand possible
+# Performance
+- Debounce sur scroll et resize
+- Intersection Observer pour les animations au scroll
+- Lazy loading des images
+# Bonnes pratiques
+- Noms explicites : handleMenuToggle, initLightbox
+- Commenter les fonctions principales
+- Gérer les erreurs (try/catch)
+- Éviter les variables globales
+# Accessibilité
+- Gérer la navigation clavier (Tab, Enter, Escape)
+- Mettre à jour les attributs ARIA dynamiquement
+- Focus visible sur les éléments interactifs

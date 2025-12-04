@@ -1,0 +1,29 @@
+
+--
+description: Règles CSS pour le portfolio
+globs: - "*.css"
+---
+# Approche Mobile First
+- Styles de base = mobile (max 480px)
+- Media queries pour tablette (768px) et desktop (1024px+)
+- Utiliser min-width dans les media queries
+# Variables CSS obligatoires
+Définir dans :root :
+- Couleurs principales et secondaires
+- Typographies
+- Espacements (--spacing-sm, --spacing-md, --spacing-lg)
+- Transitions (--transition-fast, --transition-normal)
+- Border-radius
+# Layout
+- Flexbox pour les alignements simples
+- CSS Grid pour les galeries et layouts complexes
+- Pas de float pour le layout
+# Animations
+- Utiliser transform et opacity (GPU accelerated)
+- Préférer les transitions CSS aux animations JS
+- Respecter prefers-reduced-motion
+- Durées : 200-300ms pour les micro-interactions, 500-800ms pour les animations principales
+# Nommage
+- Classes en kebab-case
+- Préfixer par section : .hero-, .gallery-, .contact-
+- Utiliser BEM si nécessaire : .block__element--modifier

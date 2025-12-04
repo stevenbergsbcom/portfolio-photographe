@@ -1,0 +1,21 @@
+--
+description: Règles générales pour le projet Portfolio Photographe
+alwaysApply: true
+---
+# Contexte du projet
+Portfolio web pour Lucas Martin, photographe professionnel.
+Site statique sans back-office, 4 pages, UI moderne et animée.
+# Langue
+- Réponds TOUJOURS en français
+- Code commenté en français
+- Contenu du site en français
+# Principes
+- Mobile First obligatoire
+- Performance : optimiser images et animations
+- Accessibilité : ARIA labels, alt texts, navigation clavier
+- SEO : balises sémantiques, meta tags, structure Hn correcte
+# Ce qu'il faut éviter
+- Pas de frameworks (React, Vue, etc.)
+- Pas de bibliothèques externes sauf si demandé
+- Pas de jQuery
+- Pas de code complexe ou sur-optimisé

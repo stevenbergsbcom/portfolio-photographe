@@ -1,0 +1,494 @@
+/* ============================================
+   PORTFOLIO LUCAS MARTIN - PHOTOGRAPHE
+   Feuille de styles principale
+   Approche Mobile First
+   ============================================ */
+
+/* ============================================
+   GOOGLE FONTS
+   Les polices sont chargées via <link> dans le HTML
+   pour de meilleures performances (preconnect)
+   - Playfair Display : titres élégants
+   - Inter : corps de texte moderne et lisible
+   ============================================ */
+
+/* ============================================
+   VARIABLES CSS
+   Toutes les valeurs configurables du site
+   ============================================ */
+
+/* Breakpoints (référence, à utiliser dans les media queries)
+   ------------------------------------------
+   sm: 480px   - Petits mobiles
+   md: 768px   - Tablettes
+   lg: 1024px  - Desktop
+   xl: 1280px  - Grands écrans
+   ------------------------------------------ */
+
+:root {
+    /* ----- COULEURS ----- */
+    /* Fonds */
+    --color-bg-primary: #0a0a0a;
+    --color-bg-secondary: #1a1a1a;
+    --color-bg-card: #141414;
+
+    /* Textes */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a0a0a0;
+    --color-text-dark: #0a0a0a;
+
+    /* Accent (or) */
+    --color-accent: #d4af37;
+    --color-accent-hover: #e5c453;
+
+    /* Bordures et overlays */
+    --color-border: #2a2a2a;
+    --color-overlay: rgba(0, 0, 0, 0.7);
+    --color-overlay-light: rgba(0, 0, 0, 0.5);
+
+    /* ----- TYPOGRAPHIES ----- */
+    --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* ----- TAILLES DE POLICE ----- */
+    /* Échelle modulaire pour une hiérarchie visuelle cohérente */
+    --text-xs: 0.75rem;
+    /* 12px */
+    --text-sm: 0.875rem;
+    /* 14px */
+    --text-base: 1rem;
+    /* 16px */
+    --text-lg: 1.125rem;
+    /* 18px */
+    --text-xl: 1.25rem;
+    /* 20px */
+    --text-2xl: 1.5rem;
+    /* 24px */
+    --text-3xl: 1.875rem;
+    /* 30px */
+    --text-4xl: 2.25rem;
+    /* 36px */
+    --text-5xl: 3rem;
+    /* 48px */
+
+    /* ----- ESPACEMENTS ----- */
+    /* Système d'espacement cohérent basé sur 4px */
+    --spacing-xs: 0.25rem;
+    /* 4px */
+    --spacing-sm: 0.5rem;
+    /* 8px */
+    --spacing-md: 1rem;
+    /* 16px */
+    --spacing-lg: 1.5rem;
+    /* 24px */
+    --spacing-xl: 2rem;
+    /* 32px */
+    --spacing-2xl: 3rem;
+    /* 48px */
+    --spacing-3xl: 4rem;
+    /* 64px */
+
+    /* ----- TRANSITIONS ----- */
+    /* Durées pour les animations et interactions */
+    --transition-fast: 200ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* ----- BORDER RADIUS ----- */
+    --radius-sm: 0.25rem;
+    /* 4px */
+    --radius-md: 0.5rem;
+    /* 8px */
+    --radius-lg: 1rem;
+    /* 16px */
+    --radius-full: 9999px;
+    /* Cercle parfait */
+
+    /* ----- OMBRES ----- */
+    /* Ombres subtiles pour la profondeur */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+    /* ----- LAYOUT ----- */
+    --max-width: 1200px;
+    --header-height: 80px;
+}
+
+/* ============================================
+   RESET CSS MODERNE
+   Normalisation des styles par défaut
+   ============================================ */
+
+/* Box-sizing global pour un calcul des dimensions plus intuitif */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Réinitialisation des marges et paddings */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Comportement de défilement fluide */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Configuration de base du body */
+body {
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Images et médias responsives */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Héritage des polices pour les éléments de formulaire */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* Suppression de l'apparence par défaut des boutons */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Suppression des styles de liste par défaut */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Liens sans soulignement par défaut */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Gestion du débordement de texte */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* Isolation pour les éléments racine (évite les problèmes de z-index) */
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/* ============================================
+   STYLES DE BASE
+   Fondation visuelle du site
+   ============================================ */
+
+/* ----- BODY ----- */
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 400;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+}
+
+/* ----- TYPOGRAPHIE : TITRES ----- */
+/* Tous les titres utilisent Playfair Display */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+}
+
+/* Tailles des titres (Mobile First) */
+h1 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: var(--text-xl);
+    font-weight: 600;
+}
+
+h4 {
+    font-size: var(--text-lg);
+    font-weight: 500;
+}
+
+h5 {
+    font-size: var(--text-base);
+    font-weight: 500;
+}
+
+h6 {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ----- PARAGRAPHES ----- */
+p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* ----- LIENS ----- */
+a {
+    color: var(--color-accent);
+    transition: color var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+    color: var(--color-accent-hover);
+}
+
+a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* ----- BOUTONS ----- */
+/* Bouton principal */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-dark);
+    background-color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Bouton outline (variante) */
+.btn-outline {
+    color: var(--color-accent);
+    background-color: transparent;
+    border: 2px solid var(--color-accent);
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+    color: var(--color-text-dark);
+    background-color: var(--color-accent);
+}
+
+/* ----- CONTAINER ----- */
+/* Conteneur centré avec largeur maximale */
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+/* ============================================
+   UTILITAIRES
+   Classes d'aide réutilisables
+   ============================================ */
+
+/* ----- ACCESSIBILITÉ : SCREEN READER ONLY ----- */
+/* Cache visuellement mais reste accessible aux lecteurs d'écran */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ----- SKIP LINK ----- */
+/* Lien d'accessibilité "Aller au contenu principal" */
+.skip-link {
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    z-index: 9999;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-dark);
+    background-color: var(--color-accent);
+    border-radius: var(--radius-sm);
+    transform: translateY(-200%);
+    transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* ----- FOCUS VISIBLE GLOBAL ----- */
+/* Style de focus accessible pour la navigation clavier */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Suppression du focus pour les interactions souris */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ============================================
+   MEDIA QUERIES - TABLETTE
+   Styles pour écrans >= 768px
+   ============================================ */
+@media (min-width: 768px) {
+
+    /* ----- VARIABLES RESPONSIVE ----- */
+    :root {
+        --header-height: 100px;
+    }
+
+    /* ----- TYPOGRAPHIE ----- */
+    h1 {
+        font-size: var(--text-4xl);
+    }
+
+    h2 {
+        font-size: var(--text-3xl);
+    }
+
+    h3 {
+        font-size: var(--text-2xl);
+    }
+
+    /* ----- CONTAINER ----- */
+    .container {
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+    }
+
+    /* Ajoutez ici les styles tablette des composants */
+}
+
+/* ============================================
+   MEDIA QUERIES - DESKTOP
+   Styles pour écrans >= 1024px
+   ============================================ */
+@media (min-width: 1024px) {
+
+    /* ----- TYPOGRAPHIE ----- */
+    h1 {
+        font-size: var(--text-5xl);
+    }
+
+    h2 {
+        font-size: var(--text-4xl);
+    }
+
+    h3 {
+        font-size: var(--text-3xl);
+    }
+
+    /* ----- CONTAINER ----- */
+    .container {
+        padding-left: var(--spacing-xl);
+        padding-right: var(--spacing-xl);
+    }
+
+    /* Ajoutez ici les styles desktop des composants */
+}
+
+/* ============================================
+   MEDIA QUERIES - GRANDS ÉCRANS
+   Styles pour écrans >= 1280px
+   ============================================ */
+@media (min-width: 1280px) {
+    /* Ajoutez ici les styles pour grands écrans */
+}
+
+/* ============================================
+   PRÉFÉRENCE UTILISATEUR : MOUVEMENT RÉDUIT
+   Respect de l'accessibilité pour les animations
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

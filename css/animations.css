@@ -1,0 +1,558 @@
+/* ============================================
+   PORTFOLIO LUCAS MARTIN - PHOTOGRAPHE
+   Animations et transitions élégantes
+   ============================================ */
+
+/* ============================================
+   KEYFRAMES - DÉFINITION DES ANIMATIONS
+   ============================================ */
+
+/* ----- FADE IN - Apparition en fondu ----- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ----- FADE IN UP - Fondu + glissement vers le haut ----- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ----- FADE IN DOWN - Fondu + glissement vers le bas ----- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ----- FADE IN LEFT - Apparition depuis la gauche ----- */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ----- FADE IN RIGHT - Apparition depuis la droite ----- */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ----- SCALE IN - Apparition avec zoom ----- */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ----- SLIDE IN UP - Glissement depuis le bas ----- */
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* ----- PULSE - Pulsation subtile pour les boutons CTA ----- */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* ----- FLOAT - Flottement léger pour les images ----- */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* ----- SHIMMER - Effet de brillance (pour les éléments de chargement) ----- */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* ----- ROTATE - Rotation continue ----- */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   CLASSES D'ANIMATION
+   Appliquent les animations aux éléments
+   ============================================ */
+
+/* Timing function personnalisé pour plus de fluidité */
+:root {
+    --ease-out-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-in-out-smooth: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* ----- FADE IN ----- */
+.animate-fadeIn {
+    animation: fadeIn 0.6s var(--ease-out-smooth) forwards;
+}
+
+/* ----- FADE IN UP ----- */
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
+}
+
+/* ----- FADE IN DOWN ----- */
+.animate-fadeInDown {
+    animation: fadeInDown 0.6s var(--ease-out-expo) forwards;
+}
+
+/* ----- FADE IN LEFT ----- */
+.animate-fadeInLeft {
+    animation: fadeInLeft 0.6s var(--ease-out-expo) forwards;
+}
+
+/* ----- FADE IN RIGHT ----- */
+.animate-fadeInRight {
+    animation: fadeInRight 0.6s var(--ease-out-expo) forwards;
+}
+
+/* ----- SCALE IN ----- */
+.animate-scaleIn {
+    animation: scaleIn 0.6s var(--ease-out-smooth) forwards;
+}
+
+/* ----- SLIDE IN UP ----- */
+.animate-slideInUp {
+    animation: slideInUp 0.6s var(--ease-out-expo) forwards;
+}
+
+/* ----- PULSE - Animation en boucle ----- */
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ----- FLOAT - Animation en boucle ----- */
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ----- SHIMMER - Animation en boucle ----- */
+.animate-shimmer {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+}
+
+/* ----- ROTATE - Animation en boucle ----- */
+.animate-rotate {
+    animation: rotate 1s linear infinite;
+}
+
+/* ============================================
+   CLASSES DE DÉLAI
+   Permettent de décaler les animations
+   ============================================ */
+
+.delay-100 {
+    animation-delay: 100ms;
+}
+
+.delay-200 {
+    animation-delay: 200ms;
+}
+
+.delay-300 {
+    animation-delay: 300ms;
+}
+
+.delay-400 {
+    animation-delay: 400ms;
+}
+
+.delay-500 {
+    animation-delay: 500ms;
+}
+
+.delay-600 {
+    animation-delay: 600ms;
+}
+
+.delay-700 {
+    animation-delay: 700ms;
+}
+
+.delay-800 {
+    animation-delay: 800ms;
+}
+
+.delay-900 {
+    animation-delay: 900ms;
+}
+
+.delay-1000 {
+    animation-delay: 1000ms;
+}
+
+/* ============================================
+   CLASSES DE DURÉE
+   Permettent de modifier la durée des animations
+   ============================================ */
+
+.duration-fast {
+    animation-duration: 0.3s;
+}
+
+.duration-normal {
+    animation-duration: 0.6s;
+}
+
+.duration-slow {
+    animation-duration: 1s;
+}
+
+.duration-slower {
+    animation-duration: 1.5s;
+}
+
+/* ============================================
+   ANIMATION AU SCROLL - REVEAL
+   Éléments révélés lors du défilement
+   ============================================ */
+
+/* ----- ÉTAT INITIAL - Élément caché ----- */
+.reveal {
+    opacity: 0;
+    transition:
+        opacity 0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+/* Variantes de reveal avec différentes directions */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+.reveal-down {
+    opacity: 0;
+    transform: translateY(-40px);
+    transition:
+        opacity 0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition:
+        opacity 0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition:
+        opacity 0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition:
+        opacity 0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+/* ----- ÉTAT ACTIF - Élément visible ----- */
+/* La classe .active est ajoutée via JavaScript quand l'élément entre dans le viewport */
+.reveal.active,
+.reveal-up.active,
+.reveal-down.active,
+.reveal-left.active,
+.reveal-right.active,
+.reveal-scale.active {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* ============================================
+   TRANSITIONS DE DÉLAI POUR ÉLÉMENTS EN CASCADE
+   Utilisées avec les classes reveal pour un effet staggered
+   ============================================ */
+
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.5s;
+}
+
+.reveal-delay-6 {
+    transition-delay: 0.6s;
+}
+
+/* ============================================
+   ANIMATIONS SPÉCIFIQUES AU PORTFOLIO
+   ============================================ */
+
+/* ----- Animation du titre Hero ----- */
+.hero-title-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s var(--ease-out-expo) 0.2s forwards;
+}
+
+.hero-title-animate .hero-title-highlight {
+    opacity: 0;
+    animation: fadeInUp 0.8s var(--ease-out-expo) 0.5s forwards;
+}
+
+/* ----- Animation du sous-titre Hero ----- */
+.hero-subtitle-animate {
+    opacity: 0;
+    animation: fadeInUp 0.8s var(--ease-out-expo) 0.7s forwards;
+}
+
+/* ----- Animation du bouton CTA Hero ----- */
+.hero-cta-animate {
+    opacity: 0;
+    animation: fadeInUp 0.8s var(--ease-out-expo) 0.9s forwards;
+}
+
+/* ----- Animation des cartes Portfolio ----- */
+.portfolio-card-animate {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.portfolio-card-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+/* Délai pour effet staggered sur les cartes */
+.portfolio-card-animate:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.portfolio-card-animate:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.portfolio-card-animate:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.portfolio-card-animate:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.portfolio-card-animate:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.portfolio-card-animate:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+/* ============================================
+   HOVER ANIMATIONS - MICRO-INTERACTIONS
+   ============================================ */
+
+/* ----- Effet de lift au hover ----- */
+.hover-lift {
+    transition: transform 0.3s var(--ease-out-smooth),
+        box-shadow 0.3s var(--ease-out-smooth);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ----- Effet de scale au hover ----- */
+.hover-scale {
+    transition: transform 0.3s var(--ease-out-smooth);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* ----- Effet de glow au hover (pour les boutons) ----- */
+.hover-glow {
+    transition: box-shadow 0.3s var(--ease-out-smooth);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ============================================
+   LOADING STATES - ÉTATS DE CHARGEMENT
+   ============================================ */
+
+/* ----- Skeleton loader ----- */
+.skeleton {
+    background: linear-gradient(90deg,
+            var(--color-bg-secondary) 25%,
+            var(--color-bg-card) 50%,
+            var(--color-bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+    border-radius: var(--radius-sm);
+}
+
+/* ----- Spinner de chargement ----- */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: rotate 0.8s linear infinite;
+}
+
+/* ============================================
+   ACCESSIBILITÉ - PRÉFÉRENCES DE MOUVEMENT RÉDUIT
+   Respect des utilisateurs sensibles aux animations
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    /* Désactivation de toutes les animations */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Les éléments reveal sont directement visibles */
+    .reveal,
+    .reveal-up,
+    .reveal-down,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Les animations Hero sont désactivées */
+    .hero-title-animate,
+    .hero-title-animate .hero-title-highlight,
+    .hero-subtitle-animate,
+    .hero-cta-animate {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
+    /* Les cartes portfolio sont directement visibles */
+    .portfolio-card-animate {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Désactivation des effets hover qui utilisent transform */
+    .hover-lift:hover,
+    .hover-scale:hover {
+        transform: none;
+    }
+}

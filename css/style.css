@@ -409,6 +409,914 @@ a:focus-visible {
 }
 
 /* ============================================
+   HEADER - EN-TÊTE DU SITE
+   Navigation principale fixe
+   ============================================ */
+
+/* ----- HEADER PRINCIPAL ----- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: var(--spacing-md) 0;
+    background-color: transparent;
+    transition: background-color var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+/* État au scroll (classe ajoutée via JavaScript) */
+.header.header-scrolled {
+    background-color: rgba(10, 10, 10, 0.95);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* ----- CONTAINER DU HEADER ----- */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* ----- LOGO ----- */
+.header-logo {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.header-logo:hover,
+.header-logo:focus {
+    color: var(--color-accent);
+}
+
+/* ----- NAVIGATION PRINCIPALE ----- */
+/* Navigation cachée en mobile (affichée via menu burger) */
+.header-nav {
+    display: none;
+}
+
+.header-nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.header-nav-link {
+    position: relative;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--spacing-xs) 0;
+    transition: color var(--transition-fast);
+}
+
+.header-nav-link:hover,
+.header-nav-link:focus {
+    color: var(--color-accent);
+}
+
+/* Lien actif */
+.header-nav-link--active,
+.header-nav-link.active {
+    color: var(--color-accent);
+}
+
+/* Soulignement animé au hover */
+.header-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-fast);
+}
+
+.header-nav-link:hover::after,
+.header-nav-link:focus::after,
+.header-nav-link--active::after,
+.header-nav-link.active::after {
+    width: 100%;
+}
+
+/* ============================================
+   MENU BURGER - MOBILE
+   Bouton hamburger pour la navigation mobile
+   ============================================ */
+
+.header-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    padding: var(--spacing-sm);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Icône hamburger (3 barres) */
+.header-menu-icon {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    transition: background-color var(--transition-fast);
+}
+
+.header-menu-icon::before,
+.header-menu-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    transition: transform var(--transition-fast),
+        top var(--transition-fast);
+}
+
+.header-menu-icon::before {
+    top: -8px;
+}
+
+.header-menu-icon::after {
+    top: 8px;
+}
+
+/* Animation en croix quand le menu est ouvert */
+.nav-open .header-menu-icon {
+    background-color: transparent;
+}
+
+.nav-open .header-menu-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-open .header-menu-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* ============================================
+   MENU MOBILE - PLEIN ÉCRAN
+   Navigation mobile en overlay
+   ============================================ */
+
+.header-nav-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal),
+        visibility var(--transition-normal);
+}
+
+/* Menu mobile visible */
+.nav-open .header-nav-mobile,
+.nav-open .header-nav {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Style alternatif : utiliser header-nav comme menu mobile en plein écran */
+body.nav-open {
+    overflow: hidden;
+}
+
+/* Redéfinition du header-nav pour mobile quand ouvert */
+body.nav-open .header-nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+body.nav-open .header-nav-list {
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+body.nav-open .header-nav-link {
+    font-size: var(--text-2xl);
+    color: var(--color-text-primary);
+}
+
+body.nav-open .header-nav-link:hover,
+body.nav-open .header-nav-link:focus {
+    color: var(--color-accent);
+}
+
+/* ============================================
+   SECTION HERO - ACCUEIL
+   Section d'introduction plein écran
+   ============================================ */
+
+/* ----- CONTENEUR HERO ----- */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--header-height) var(--spacing-md) var(--spacing-2xl);
+    overflow: hidden;
+}
+
+/* ----- CONTAINER DU HERO ----- */
+.hero-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* ----- CONTENU TEXTE DU HERO ----- */
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+/* ----- TITRE PRINCIPAL H1 ----- */
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Mise en valeur d'une partie du titre */
+.hero-title-highlight {
+    display: block;
+    color: var(--color-accent);
+}
+
+/* ----- SOUS-TITRE ----- */
+.hero-subtitle {
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ----- BOUTON CTA DU HERO ----- */
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-2xl);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-dark);
+    background-color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.hero-cta:hover,
+.hero-cta:focus {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    color: var(--color-text-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.hero-cta:active {
+    transform: translateY(-1px);
+}
+
+/* ----- VIDÉO / PLACEHOLDER DE FOND ----- */
+.hero-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Vidéo de fond */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.4;
+}
+
+/* Placeholder pour la vidéo (avant chargement ou image de remplacement) */
+.hero-video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+            var(--color-bg-primary) 0%,
+            var(--color-bg-secondary) 50%,
+            var(--color-bg-primary) 100%);
+    opacity: 1;
+}
+
+/* Overlay sombre sur la vidéo pour la lisibilité du texte */
+.hero-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Icône de lecture (placeholder) */
+.hero-video-play-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    font-size: var(--text-2xl);
+    color: var(--color-text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--color-text-primary);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-md);
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.hero-video-placeholder:hover .hero-video-play-icon {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: scale(1.1);
+}
+
+/* Texte sous l'icône de lecture */
+.hero-video-text {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text-secondary);
+}
+
+/* ============================================
+   SECTION PORTFOLIO PREVIEW - APERÇU
+   Grille des catégories de photos
+   ============================================ */
+
+/* ----- CONTENEUR DE SECTION ----- */
+.portfolio-preview {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background-color: var(--color-bg-secondary);
+}
+
+/* ----- CONTAINER CENTRÉ ----- */
+.portfolio-preview-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ----- TITRE DE SECTION ----- */
+.portfolio-preview-title {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ----- SOUS-TITRE DE SECTION ----- */
+.portfolio-preview-subtitle {
+    text-align: center;
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* ----- GRILLE DES CARTES ----- */
+.portfolio-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+/* ----- CARTE PORTFOLIO ----- */
+.portfolio-preview-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+}
+
+/* Lien de la carte (couvre toute la carte) */
+.portfolio-preview-card-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+/* ----- WRAPPER IMAGE ----- */
+.portfolio-preview-card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ----- IMAGE DE LA CARTE ----- */
+.portfolio-preview-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+/* Effet zoom au hover */
+.portfolio-preview-card:hover .portfolio-preview-card-image,
+.portfolio-preview-card-link:focus .portfolio-preview-card-image {
+    transform: scale(1.1);
+}
+
+/* ----- OVERLAY DÉGRADÉ ----- */
+.portfolio-preview-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.4) 40%,
+            transparent 100%);
+    opacity: 0.8;
+    transition: opacity var(--transition-normal);
+}
+
+/* Overlay plus visible au hover */
+.portfolio-preview-card:hover .portfolio-preview-card-overlay,
+.portfolio-preview-card-link:focus .portfolio-preview-card-overlay {
+    opacity: 1;
+}
+
+/* ----- CONTENU DE LA CARTE (titre + description) ----- */
+.portfolio-preview-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-lg);
+    z-index: 2;
+}
+
+/* ----- TITRE DE LA CATÉGORIE ----- */
+.portfolio-preview-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+    transition: color var(--transition-fast);
+}
+
+/* Titre doré au hover */
+.portfolio-preview-card:hover .portfolio-preview-card-title,
+.portfolio-preview-card-link:focus .portfolio-preview-card-title {
+    color: var(--color-accent);
+}
+
+/* ----- DESCRIPTION DE LA CARTE ----- */
+.portfolio-preview-card-description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+        opacity var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+/* Description visible au hover */
+.portfolio-preview-card:hover .portfolio-preview-card-description,
+.portfolio-preview-card-link:focus .portfolio-preview-card-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   SECTION À PROPOS - PREVIEW
+   Présentation courte du photographe
+   ============================================ */
+
+/* ----- CONTENEUR DE SECTION ----- */
+.about-preview {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background-color: var(--color-bg-primary);
+}
+
+/* ----- CONTAINER CENTRÉ ----- */
+.about-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2xl);
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ----- CONTENU TEXTE ----- */
+.about-preview-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+/* ----- TITRE DE SECTION ----- */
+.about-preview-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ----- TEXTE DE PRÉSENTATION ----- */
+.about-preview-text {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.about-preview-text:last-of-type {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ----- LIEN "EN SAVOIR PLUS" ----- */
+.about-preview-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition:
+        color var(--transition-fast),
+        gap var(--transition-fast);
+}
+
+.about-preview-link:hover,
+.about-preview-link:focus {
+    color: var(--color-accent-hover);
+    gap: var(--spacing-md);
+}
+
+/* Flèche animée */
+.about-preview-link-arrow {
+    display: inline-block;
+    transition: transform var(--transition-fast);
+}
+
+.about-preview-link:hover .about-preview-link-arrow,
+.about-preview-link:focus .about-preview-link-arrow {
+    transform: translateX(5px);
+}
+
+/* ----- WRAPPER IMAGE ----- */
+.about-preview-image-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* ----- IMAGE ----- */
+.about-preview-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+}
+
+/* ============================================
+   SECTION CONTACT CTA
+   Appel à l'action pour contacter le photographe
+   ============================================ */
+
+/* ----- CONTENEUR DE SECTION ----- */
+.contact-cta {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background: linear-gradient(135deg,
+            var(--color-accent) 0%,
+            var(--color-accent-hover) 100%);
+    text-align: center;
+}
+
+/* ----- CONTAINER CENTRÉ ----- */
+.contact-cta-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ----- TITRE ----- */
+.contact-cta-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ----- SOUS-TEXTE ----- */
+.contact-cta-text {
+    font-size: var(--text-base);
+    color: rgba(10, 10, 10, 0.7);
+    margin-bottom: var(--spacing-xl);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ----- BOUTON CTA ----- */
+.contact-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-2xl);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    border: 2px solid var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+.contact-cta-button:hover,
+.contact-cta-button:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: var(--color-bg-secondary);
+}
+
+.contact-cta-button:active {
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   FOOTER - PIED DE PAGE
+   Informations et liens du bas de page
+   ============================================ */
+
+/* ----- CONTENEUR FOOTER ----- */
+.footer {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    background-color: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+}
+
+/* ----- CONTAINER CENTRÉ ----- */
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ----- SECTION RÉSEAUX SOCIAUX ----- */
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.footer-social-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Liste des réseaux sociaux */
+.footer-social-list {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.footer-social-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus {
+    color: var(--color-accent);
+}
+
+/* Icônes des réseaux sociaux */
+.footer-social-icon {
+    font-size: var(--text-xl);
+    line-height: 1;
+}
+
+/* ----- COPYRIGHT ----- */
+.footer-copyright {
+    margin-top: var(--spacing-md);
+}
+
+.footer-copyright p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+    margin-bottom: 0;
+}
+
+/* ----- LIEN RETOUR HAUT DE PAGE ----- */
+.footer-back-to-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-back-to-top:hover,
+.footer-back-to-top:focus {
+    color: var(--color-accent);
+}
+
+.footer-back-to-top-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: var(--text-lg);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.footer-back-to-top:hover .footer-back-to-top-icon,
+.footer-back-to-top:focus .footer-back-to-top-icon {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+}
+
+.footer-back-to-top-text {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ----- BOUTON RETOUR HAUT FIXE (optionnel) ----- */
+/* S'affiche après scroll via JavaScript avec la classe .visible */
+.back-to-top-fixed {
+    position: fixed;
+    bottom: var(--spacing-xl);
+    right: var(--spacing-xl);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: var(--text-xl);
+    color: var(--color-text-dark);
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition:
+        opacity var(--transition-normal),
+        visibility var(--transition-normal),
+        transform var(--transition-normal),
+        background-color var(--transition-fast);
+    box-shadow: var(--shadow-md);
+}
+
+.back-to-top-fixed.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top-fixed:hover,
+.back-to-top-fixed:focus {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-3px);
+}
+
+/* ============================================
    MEDIA QUERIES - TABLETTE
    Styles pour écrans >= 768px
    ============================================ */
@@ -438,7 +1346,111 @@ a:focus-visible {
         padding-right: var(--spacing-lg);
     }
 
-    /* Ajoutez ici les styles tablette des composants */
+    /* ----- HEADER TABLETTE ----- */
+    .header-container {
+        padding: 0 var(--spacing-lg);
+    }
+
+    .header-logo {
+        font-size: var(--text-2xl);
+    }
+
+    /* ----- HERO TABLETTE ----- */
+    .hero {
+        padding: var(--header-height) var(--spacing-lg) var(--spacing-3xl);
+    }
+
+    .hero-container {
+        padding: 0 var(--spacing-lg);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-lg);
+    }
+
+    .hero-cta {
+        padding: var(--spacing-lg) var(--spacing-3xl);
+        font-size: var(--text-base);
+    }
+
+    .hero-video-play-icon {
+        width: 100px;
+        height: 100px;
+        font-size: var(--text-3xl);
+    }
+
+    /* ----- PORTFOLIO PREVIEW TABLETTE ----- */
+    .portfolio-preview {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .portfolio-preview-title {
+        font-size: var(--text-3xl);
+    }
+
+    .portfolio-preview-subtitle {
+        font-size: var(--text-lg);
+    }
+
+    /* Grille 2 colonnes en tablette */
+    .portfolio-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xl);
+    }
+
+    .portfolio-preview-card-title {
+        font-size: var(--text-2xl);
+    }
+
+    /* ----- ABOUT PREVIEW TABLETTE ----- */
+    .about-preview {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .about-preview-title {
+        font-size: var(--text-3xl);
+    }
+
+    .about-preview-text {
+        font-size: var(--text-lg);
+    }
+
+    /* ----- CONTACT CTA TABLETTE ----- */
+    .contact-cta {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .contact-cta-title {
+        font-size: var(--text-3xl);
+    }
+
+    .contact-cta-text {
+        font-size: var(--text-lg);
+    }
+
+    .contact-cta-button {
+        padding: var(--spacing-md) var(--spacing-3xl);
+        font-size: var(--text-base);
+    }
+
+    /* ----- FOOTER TABLETTE ----- */
+    .footer {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer-social {
+        align-items: flex-start;
+    }
+
+    .footer-copyright {
+        margin-top: 0;
+    }
 }
 
 /* ============================================
@@ -466,7 +1478,221 @@ a:focus-visible {
         padding-right: var(--spacing-xl);
     }
 
-    /* Ajoutez ici les styles desktop des composants */
+    /* ----- HEADER DESKTOP ----- */
+    .header-container {
+        padding: 0 var(--spacing-xl);
+    }
+
+    /* Navigation visible en desktop */
+    .header-nav {
+        display: block;
+    }
+
+    /* Menu burger caché en desktop */
+    .header-menu-toggle {
+        display: none;
+    }
+
+    /* Annulation des styles mobile pour body.nav-open en desktop */
+    body.nav-open .header-nav {
+        position: static;
+        background-color: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    body.nav-open .header-nav-list {
+        flex-direction: row;
+        gap: var(--spacing-xl);
+    }
+
+    body.nav-open .header-nav-link {
+        font-size: var(--text-sm);
+        color: var(--color-text-secondary);
+    }
+
+    body.nav-open {
+        overflow: auto;
+    }
+
+    /* ----- HERO DESKTOP ----- */
+    .hero {
+        padding: var(--header-height) var(--spacing-xl) var(--spacing-3xl);
+    }
+
+    .hero-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-3xl);
+        padding: 0 var(--spacing-xl);
+    }
+
+    .hero-content {
+        text-align: left;
+        flex: 1;
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-xl);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .hero-video-play-icon {
+        width: 120px;
+        height: 120px;
+        font-size: var(--text-4xl);
+    }
+
+    /* ----- PORTFOLIO PREVIEW DESKTOP ----- */
+    .portfolio-preview {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .portfolio-preview-title {
+        font-size: var(--text-4xl);
+    }
+
+    /* Grille 3 colonnes en desktop */
+    .portfolio-preview-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Aspect ratio plus vertical pour les cartes en desktop */
+    .portfolio-preview-card {
+        aspect-ratio: 3 / 4;
+    }
+
+    .portfolio-preview-card-content {
+        padding: var(--spacing-xl);
+    }
+
+    .portfolio-preview-card-title {
+        font-size: var(--text-2xl);
+    }
+
+    .portfolio-preview-card-description {
+        font-size: var(--text-base);
+    }
+
+    /* ----- ABOUT PREVIEW DESKTOP ----- */
+    .about-preview {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .about-preview-container {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--spacing-3xl);
+    }
+
+    .about-preview-content {
+        flex: 1;
+        text-align: left;
+        max-width: none;
+    }
+
+    .about-preview-title {
+        font-size: var(--text-4xl);
+    }
+
+    .about-preview-text {
+        font-size: var(--text-lg);
+    }
+
+    .about-preview-image-wrapper {
+        flex-shrink: 0;
+        width: auto;
+        max-width: 450px;
+    }
+
+    .about-preview-image {
+        width: 450px;
+        height: 550px;
+    }
+
+    /* ----- CONTACT CTA DESKTOP ----- */
+    .contact-cta {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .contact-cta-title {
+        font-size: var(--text-4xl);
+    }
+
+    .contact-cta-text {
+        font-size: var(--text-xl);
+        max-width: 600px;
+    }
+
+    /* ----- FOOTER DESKTOP ----- */
+    .footer {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .footer-social-list {
+        gap: var(--spacing-xl);
+    }
+
+    .footer-social-link {
+        font-size: var(--text-base);
+    }
+
+    .footer-social-icon {
+        font-size: var(--text-2xl);
+    }
+
+    /* ----- EFFETS HOVER DESKTOP ----- */
+    /* Sur desktop, on assume une souris donc des hovers plus prononcés */
+
+    /* Effet hover sur les cartes portfolio plus prononcé */
+    .portfolio-preview-card:hover .portfolio-preview-card-image {
+        transform: scale(1.15);
+    }
+
+    .portfolio-preview-card:hover .portfolio-preview-card-overlay {
+        background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.9) 0%,
+                rgba(0, 0, 0, 0.5) 50%,
+                transparent 100%);
+    }
+
+    /* Effet hover sur le bouton CTA Hero */
+    .hero-cta:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Effet hover sur les liens de navigation */
+    .header-nav-link:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Effet hover sur le bouton Contact CTA */
+    .contact-cta-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Effet hover sur l'image About */
+    .about-preview-image {
+        transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    }
+
+    .about-preview-image:hover {
+        transform: scale(1.02);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Effet hover sur les liens sociaux du footer */
+    .footer-social-link:hover .footer-social-icon {
+        transform: scale(1.2);
+    }
+
+    .footer-social-icon {
+        transition: transform var(--transition-fast);
+    }
 }
 
 /* ============================================
@@ -474,7 +1700,98 @@ a:focus-visible {
    Styles pour écrans >= 1280px
    ============================================ */
 @media (min-width: 1280px) {
-    /* Ajoutez ici les styles pour grands écrans */
+
+    /* ----- VARIABLES GRANDS ÉCRANS ----- */
+    :root {
+        --header-height: 110px;
+    }
+
+    /* ----- CONTAINER ÉLARGI ----- */
+    .container {
+        padding-left: var(--spacing-2xl);
+        padding-right: var(--spacing-2xl);
+    }
+
+    /* ----- HEADER GRANDS ÉCRANS ----- */
+    .header-container {
+        padding: 0 var(--spacing-2xl);
+    }
+
+    .header-nav-list {
+        gap: var(--spacing-2xl);
+    }
+
+    .header-nav-link {
+        font-size: var(--text-base);
+    }
+
+    /* ----- HERO GRANDS ÉCRANS ----- */
+    .hero {
+        padding: var(--header-height) var(--spacing-2xl) var(--spacing-3xl);
+    }
+
+    .hero-container {
+        gap: var(--spacing-3xl);
+        padding: 0 var(--spacing-2xl);
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 6vw, 5rem);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-xl);
+        max-width: 550px;
+    }
+
+    /* ----- PORTFOLIO PREVIEW GRANDS ÉCRANS ----- */
+    .portfolio-preview {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    .portfolio-preview-grid {
+        gap: var(--spacing-xl);
+    }
+
+    /* ----- ABOUT PREVIEW GRANDS ÉCRANS ----- */
+    .about-preview {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    .about-preview-container {
+        gap: var(--spacing-3xl);
+    }
+
+    .about-preview-image-wrapper {
+        max-width: 500px;
+    }
+
+    .about-preview-image {
+        width: 500px;
+        height: 600px;
+    }
+
+    /* ----- CONTACT CTA GRANDS ÉCRANS ----- */
+    .contact-cta {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    .contact-cta-title {
+        font-size: var(--text-5xl);
+    }
+
+    .contact-cta-text {
+        max-width: 700px;
+    }
+
+    /* ----- FOOTER GRANDS ÉCRANS ----- */
+    .footer {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    .footer-social-list {
+        gap: var(--spacing-2xl);
+    }
 }
 
 /* ============================================

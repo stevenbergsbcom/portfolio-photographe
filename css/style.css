@@ -1317,6 +1317,467 @@ body.nav-open .header-nav-link:focus {
 }
 
 /* ============================================
+   ========================================
+   PAGE PORTFOLIO
+   Styles spécifiques à la page portfolio
+   ========================================
+   ============================================ */
+
+/* ============================================
+   HERO PORTFOLIO
+   En-tête de la page portfolio
+   ============================================ */
+
+.portfolio-hero {
+    padding: calc(var(--header-height) + var(--spacing-xl)) var(--spacing-md) var(--spacing-2xl);
+    background: linear-gradient(
+        180deg,
+        var(--color-bg-secondary) 0%,
+        var(--color-bg-primary) 100%
+    );
+    text-align: center;
+}
+
+.portfolio-hero-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.portfolio-hero-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.portfolio-hero-text {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   FILTRES PORTFOLIO
+   Boutons de filtrage par catégorie
+   ============================================ */
+
+.portfolio-filters {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-bg-primary);
+}
+
+.portfolio-filters-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.portfolio-filters-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+/* ----- BOUTON DE FILTRE ----- */
+.portfolio-filter-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: 
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.portfolio-filter-btn:hover,
+.portfolio-filter-btn:focus {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* État actif du filtre */
+.portfolio-filter-btn--active,
+.portfolio-filter-btn.active {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-text-dark);
+}
+
+.portfolio-filter-btn--active:hover,
+.portfolio-filter-btn.active:hover {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+}
+
+/* ============================================
+   GALERIE PORTFOLIO
+   Grille des photos
+   ============================================ */
+
+.portfolio-gallery {
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-3xl);
+    background-color: var(--color-bg-primary);
+}
+
+.portfolio-gallery-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.portfolio-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+/* ============================================
+   ITEM DE GALERIE
+   Carte individuelle de photo
+   ============================================ */
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    aspect-ratio: 4 / 3;
+}
+
+/* Masquage des items filtrés */
+.gallery-item.hidden {
+    display: none;
+}
+
+/* ----- LIEN DE LA GALERIE ----- */
+.gallery-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+/* ----- IMAGE DE LA GALERIE ----- */
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+/* Effet zoom au hover */
+.gallery-item:hover .gallery-image,
+.gallery-link:focus .gallery-image {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   OVERLAY DE LA GALERIE
+   Informations au survol
+   ============================================ */
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: var(--spacing-lg);
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+/* Overlay visible au hover */
+.gallery-item:hover .gallery-overlay,
+.gallery-link:focus .gallery-overlay {
+    opacity: 1;
+}
+
+/* ----- CATÉGORIE ----- */
+.gallery-category {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ----- ICÔNE D'AGRANDISSEMENT ----- */
+.gallery-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: var(--color-text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--color-text-primary);
+    border-radius: var(--radius-full);
+    transition: 
+        background-color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.gallery-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.gallery-item:hover .gallery-icon,
+.gallery-link:focus .gallery-icon {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* ============================================
+   CTA PORTFOLIO
+   Appel à l'action en bas de page
+   ============================================ */
+
+.portfolio-cta {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background: linear-gradient(
+        135deg,
+        var(--color-accent) 0%,
+        var(--color-accent-hover) 100%
+    );
+    text-align: center;
+}
+
+.portfolio-cta-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.portfolio-cta-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.portfolio-cta-text {
+    font-size: var(--text-base);
+    color: rgba(10, 10, 10, 0.7);
+    margin-bottom: var(--spacing-xl);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.portfolio-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-2xl);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    border: 2px solid var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: 
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+.portfolio-cta-button:hover,
+.portfolio-cta-button:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: var(--color-bg-secondary);
+}
+
+/* ============================================
+   LIGHTBOX
+   Visionneuse d'images plein écran
+   ============================================ */
+
+/* ----- CONTENEUR PRINCIPAL ----- */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.95);
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+/* ----- CONTENU (IMAGE) ----- */
+.lightbox-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+    max-height: 85vh;
+    padding: var(--spacing-md);
+}
+
+/* ----- IMAGE ----- */
+.lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+    opacity: 1;
+    transition: opacity 0.15s ease;
+}
+
+/* ----- BOUTONS DE CONTRÔLE ----- */
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: var(--spacing-sm);
+    color: var(--color-text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: 
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.lightbox-close:focus,
+.lightbox-prev:focus,
+.lightbox-next:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.lightbox-close:focus,
+.lightbox-prev:focus,
+.lightbox-next:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Bouton fermer */
+.lightbox-close {
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+}
+
+/* Boutons navigation */
+.lightbox-prev {
+    left: var(--spacing-lg);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-next {
+    right: var(--spacing-lg);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Icônes SVG */
+.lightbox-close svg,
+.lightbox-prev svg,
+.lightbox-next svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ----- COMPTEUR ----- */
+.lightbox-counter {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    opacity: 0.7;
+}
+
+/* ----- LIGHTBOX RESPONSIVE ----- */
+@media (max-width: 767px) {
+    .lightbox-prev,
+    .lightbox-next {
+        top: auto;
+        bottom: var(--spacing-lg);
+        transform: none;
+    }
+
+    .lightbox-prev {
+        left: 20%;
+    }
+
+    .lightbox-next {
+        right: 20%;
+    }
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+        transform: scale(1.1);
+    }
+
+    .lightbox-counter {
+        bottom: calc(var(--spacing-lg) + 70px);
+    }
+
+    .lightbox-content {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+
+    .lightbox-image {
+        max-height: 70vh;
+    }
+}
+
+/* ============================================
    MEDIA QUERIES - TABLETTE
    Styles pour écrans >= 768px
    ============================================ */
@@ -1450,6 +1911,58 @@ body.nav-open .header-nav-link:focus {
 
     .footer-copyright {
         margin-top: 0;
+    }
+
+    /* ========== PAGE PORTFOLIO - TABLETTE ========== */
+
+    /* Hero Portfolio */
+    .portfolio-hero {
+        padding: calc(var(--header-height) + var(--spacing-2xl)) var(--spacing-lg) var(--spacing-2xl);
+    }
+
+    .portfolio-hero-title {
+        font-size: var(--text-4xl);
+    }
+
+    .portfolio-hero-text {
+        font-size: var(--text-lg);
+    }
+
+    /* Filtres */
+    .portfolio-filters {
+        padding: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .portfolio-filters-buttons {
+        gap: var(--spacing-md);
+    }
+
+    .portfolio-filter-btn {
+        padding: var(--spacing-sm) var(--spacing-xl);
+        font-size: var(--text-base);
+    }
+
+    /* Galerie - 2 colonnes */
+    .portfolio-gallery {
+        padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-3xl);
+    }
+
+    .portfolio-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    /* CTA Portfolio */
+    .portfolio-cta {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .portfolio-cta-title {
+        font-size: var(--text-3xl);
+    }
+
+    .portfolio-cta-text {
+        font-size: var(--text-lg);
     }
 }
 
@@ -1693,6 +2206,69 @@ body.nav-open .header-nav-link:focus {
     .footer-social-icon {
         transition: transform var(--transition-fast);
     }
+
+    /* ========== PAGE PORTFOLIO - DESKTOP ========== */
+
+    /* Hero Portfolio */
+    .portfolio-hero {
+        padding: calc(var(--header-height) + var(--spacing-3xl)) var(--spacing-xl) var(--spacing-3xl);
+    }
+
+    .portfolio-hero-title {
+        font-size: var(--text-5xl);
+    }
+
+    .portfolio-hero-text {
+        font-size: var(--text-xl);
+        max-width: 700px;
+    }
+
+    /* Filtres */
+    .portfolio-filters {
+        padding: var(--spacing-xl) var(--spacing-xl);
+    }
+
+    .portfolio-filters-buttons {
+        gap: var(--spacing-lg);
+    }
+
+    /* Galerie - 3 colonnes */
+    .portfolio-gallery {
+        padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-3xl);
+    }
+
+    .portfolio-gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+    }
+
+    /* Effet hover galerie plus prononcé */
+    .gallery-item:hover .gallery-image {
+        transform: scale(1.1);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.4) 50%,
+            transparent 100%
+        );
+    }
+
+    /* CTA Portfolio */
+    .portfolio-cta {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .portfolio-cta-title {
+        font-size: var(--text-4xl);
+    }
+
+    .portfolio-cta-text {
+        font-size: var(--text-xl);
+        max-width: 600px;
+    }
 }
 
 /* ============================================
@@ -1791,6 +2367,35 @@ body.nav-open .header-nav-link:focus {
 
     .footer-social-list {
         gap: var(--spacing-2xl);
+    }
+
+    /* ========== PAGE PORTFOLIO - GRANDS ÉCRANS ========== */
+
+    /* Hero Portfolio */
+    .portfolio-hero {
+        padding: calc(var(--header-height) + var(--spacing-3xl)) var(--spacing-2xl) var(--spacing-3xl);
+    }
+
+    /* Galerie - 4 colonnes */
+    .portfolio-gallery {
+        padding: var(--spacing-xl) var(--spacing-2xl) var(--spacing-3xl);
+    }
+
+    .portfolio-gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* CTA Portfolio */
+    .portfolio-cta {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    .portfolio-cta-title {
+        font-size: var(--text-5xl);
+    }
+
+    .portfolio-cta-text {
+        max-width: 700px;
     }
 }
 

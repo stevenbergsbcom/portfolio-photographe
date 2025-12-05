@@ -450,6 +450,60 @@
 }
 
 /* ============================================
+   ANIMATIONS GALERIE PORTFOLIO
+   Animation fade-in pour les items au scroll
+   ============================================ */
+
+/* ----- État initial : élément caché ----- */
+.gallery-item {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* ----- État visible : élément animé ----- */
+/* La classe .visible est ajoutée via JavaScript */
+.gallery-item.visible {
+    animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
+}
+
+/* ----- Délai progressif pour effet cascade ----- */
+/* Répétition tous les 12 éléments pour grandes galeries */
+.gallery-item:nth-child(12n+1).visible { animation-delay: 0.1s; }
+.gallery-item:nth-child(12n+2).visible { animation-delay: 0.15s; }
+.gallery-item:nth-child(12n+3).visible { animation-delay: 0.2s; }
+.gallery-item:nth-child(12n+4).visible { animation-delay: 0.25s; }
+.gallery-item:nth-child(12n+5).visible { animation-delay: 0.3s; }
+.gallery-item:nth-child(12n+6).visible { animation-delay: 0.35s; }
+.gallery-item:nth-child(12n+7).visible { animation-delay: 0.4s; }
+.gallery-item:nth-child(12n+8).visible { animation-delay: 0.45s; }
+.gallery-item:nth-child(12n+9).visible { animation-delay: 0.5s; }
+.gallery-item:nth-child(12n+10).visible { animation-delay: 0.55s; }
+.gallery-item:nth-child(12n+11).visible { animation-delay: 0.6s; }
+.gallery-item:nth-child(12n+12).visible { animation-delay: 0.65s; }
+
+/* ----- Animation de filtrage ----- */
+/* Quand un filtre est appliqué, les éléments se cachent/apparaissent */
+.gallery-item.filtering-out {
+    animation: fadeOut 0.3s var(--ease-out-smooth) forwards;
+}
+
+.gallery-item.filtering-in {
+    animation: fadeInUp 0.4s var(--ease-out-expo) forwards;
+}
+
+/* Keyframe pour le fadeOut du filtrage */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+/* ============================================
    HOVER ANIMATIONS - MICRO-INTERACTIONS
    ============================================ */
 
@@ -546,6 +600,20 @@
 
     /* Les cartes portfolio sont directement visibles */
     .portfolio-card-animate {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Les items de galerie sont directement visibles */
+    .gallery-item {
+        opacity: 1;
+        transform: none;
+    }
+
+    .gallery-item.visible,
+    .gallery-item.filtering-in,
+    .gallery-item.filtering-out {
+        animation: none;
         opacity: 1;
         transform: none;
     }

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="#1a1a1a"/>
+  
+  <!-- Subtle gradient overlay -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="64" fill="url(#grad)"/>
+  
+  <!-- L letter -->
+  <path d="M120 140 L120 372 L220 372 L220 340 L160 340 L160 140 Z" fill="#ffffff"/>
+  
+  <!-- M letter -->
+  <path d="M250 372 L250 140 L310 140 L360 260 L410 140 L470 140 L470 372 L430 372 L430 220 L380 340 L340 340 L290 220 L290 372 Z" fill="#ffffff"/>
+  
+  <!-- Accent line -->
+  <rect x="120" y="390" width="350" height="4" rx="2" fill="#c9a962"/>
+</svg>

@@ -1778,6 +1778,315 @@ body.nav-open .header-nav-link:focus {
 }
 
 /* ============================================
+   ========================================
+   PAGE À PROPOS
+   Styles spécifiques à la page à propos
+   ========================================
+   ============================================ */
+
+/* ============================================
+   HERO À PROPOS
+   En-tête de la page
+   ============================================ */
+
+.about-hero {
+    padding: calc(var(--header-height) + var(--spacing-xl)) var(--spacing-md) var(--spacing-2xl);
+    background: linear-gradient(
+        180deg,
+        var(--color-bg-secondary) 0%,
+        var(--color-bg-primary) 100%
+    );
+    text-align: center;
+}
+
+.about-hero-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.about-hero-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.about-hero-text {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   SECTION BIOGRAPHIE
+   Photo et présentation
+   ============================================ */
+
+.about-bio {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background-color: var(--color-bg-primary);
+}
+
+.about-bio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2xl);
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ----- IMAGE ----- */
+.about-bio-image-wrapper {
+    width: 100%;
+    max-width: 350px;
+}
+
+.about-bio-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+}
+
+/* ----- CONTENU TEXTE ----- */
+.about-bio-content {
+    text-align: center;
+}
+
+.about-bio-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.about-bio-name {
+    color: var(--color-accent);
+}
+
+.about-bio-text {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.about-bio-text:last-child {
+    margin-bottom: 0;
+}
+
+.about-bio-text strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+/* ============================================
+   SECTION PHILOSOPHIE
+   Approche et valeurs
+   ============================================ */
+
+.about-philosophy {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background-color: var(--color-bg-secondary);
+}
+
+.about-philosophy-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-philosophy-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.about-philosophy-subtitle {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* ----- GRILLE DES CARTES ----- */
+.about-philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+/* ----- CARTE VALEUR ----- */
+.about-philosophy-card {
+    padding: var(--spacing-xl);
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: 
+        transform var(--transition-normal),
+        border-color var(--transition-normal);
+}
+
+.about-philosophy-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+}
+
+.about-philosophy-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-lg);
+    color: var(--color-accent);
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: var(--radius-full);
+}
+
+.about-philosophy-card-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.about-philosophy-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.about-philosophy-card-text {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   SECTION CHIFFRES CLÉS
+   Statistiques
+   ============================================ */
+
+.about-stats {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background: linear-gradient(
+        135deg,
+        var(--color-accent) 0%,
+        var(--color-accent-hover) 100%
+    );
+}
+
+.about-stats-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+    text-align: center;
+}
+
+.about-stat {
+    padding: var(--spacing-lg);
+}
+
+.about-stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.about-stat-label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: rgba(10, 10, 10, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================
+   CTA À PROPOS
+   Appel à l'action
+   ============================================ */
+
+.about-cta {
+    padding: var(--spacing-3xl) var(--spacing-md);
+    background-color: var(--color-bg-primary);
+    text-align: center;
+}
+
+.about-cta-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.about-cta-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.about-cta-text {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-2xl);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-dark);
+    background-color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: 
+        background-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.about-cta-button:hover,
+.about-cta-button:focus {
+    color: var(--color-text-dark);
+    background-color: var(--color-accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* ============================================
    MEDIA QUERIES - TABLETTE
    Styles pour écrans >= 768px
    ============================================ */
@@ -1963,6 +2272,80 @@ body.nav-open .header-nav-link:focus {
 
     .portfolio-cta-text {
         font-size: var(--text-lg);
+    }
+
+    /* ========== PAGE À PROPOS - TABLETTE ========== */
+
+    /* Hero */
+    .about-hero {
+        padding: calc(var(--header-height) + var(--spacing-2xl)) var(--spacing-lg) var(--spacing-2xl);
+    }
+
+    .about-hero-title {
+        font-size: var(--text-4xl);
+    }
+
+    .about-hero-text {
+        font-size: var(--text-lg);
+    }
+
+    /* Bio */
+    .about-bio {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .about-bio-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--spacing-3xl);
+    }
+
+    .about-bio-image-wrapper {
+        flex-shrink: 0;
+        max-width: 300px;
+    }
+
+    .about-bio-content {
+        text-align: left;
+    }
+
+    .about-bio-title {
+        font-size: var(--text-3xl);
+    }
+
+    .about-bio-text {
+        font-size: var(--text-lg);
+    }
+
+    /* Philosophie */
+    .about-philosophy {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .about-philosophy-title {
+        font-size: var(--text-3xl);
+    }
+
+    .about-philosophy-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Stats */
+    .about-stats {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .about-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* CTA */
+    .about-cta {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .about-cta-title {
+        font-size: var(--text-3xl);
     }
 }
 
@@ -2269,6 +2652,91 @@ body.nav-open .header-nav-link:focus {
         font-size: var(--text-xl);
         max-width: 600px;
     }
+
+    /* ========== PAGE À PROPOS - DESKTOP ========== */
+
+    /* Hero */
+    .about-hero {
+        padding: calc(var(--header-height) + var(--spacing-3xl)) var(--spacing-xl) var(--spacing-3xl);
+    }
+
+    .about-hero-title {
+        font-size: var(--text-5xl);
+    }
+
+    .about-hero-text {
+        font-size: var(--text-xl);
+        max-width: 700px;
+    }
+
+    /* Bio */
+    .about-bio {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .about-bio-container {
+        gap: var(--spacing-3xl);
+    }
+
+    .about-bio-image-wrapper {
+        max-width: 400px;
+    }
+
+    .about-bio-image {
+        width: 400px;
+        height: 500px;
+    }
+
+    .about-bio-title {
+        font-size: var(--text-4xl);
+    }
+
+    /* Philosophie */
+    .about-philosophy {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .about-philosophy-title {
+        font-size: var(--text-4xl);
+    }
+
+    .about-philosophy-card {
+        padding: var(--spacing-2xl);
+    }
+
+    .about-philosophy-card-title {
+        font-size: var(--text-xl);
+    }
+
+    .about-philosophy-card-text {
+        font-size: var(--text-base);
+    }
+
+    /* Stats */
+    .about-stats {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .about-stat-number {
+        font-size: var(--text-5xl);
+    }
+
+    .about-stat-label {
+        font-size: var(--text-base);
+    }
+
+    /* CTA */
+    .about-cta {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .about-cta-title {
+        font-size: var(--text-4xl);
+    }
+
+    .about-cta-text {
+        font-size: var(--text-lg);
+    }
 }
 
 /* ============================================
@@ -2396,6 +2864,46 @@ body.nav-open .header-nav-link:focus {
 
     .portfolio-cta-text {
         max-width: 700px;
+    }
+
+    /* ========== PAGE À PROPOS - GRANDS ÉCRANS ========== */
+
+    /* Hero */
+    .about-hero {
+        padding: calc(var(--header-height) + var(--spacing-3xl)) var(--spacing-2xl) var(--spacing-3xl);
+    }
+
+    /* Bio */
+    .about-bio {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    .about-bio-image-wrapper {
+        max-width: 450px;
+    }
+
+    .about-bio-image {
+        width: 450px;
+        height: 550px;
+    }
+
+    /* Philosophie */
+    .about-philosophy {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    /* Stats */
+    .about-stats {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    /* CTA */
+    .about-cta {
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    .about-cta-title {
+        font-size: var(--text-5xl);
     }
 }
 
